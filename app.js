@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const morgan = require('morgan');
+const multipart = require('connect-multiparty');
 
 const routes = require('./routes/routes');
 
@@ -16,10 +17,12 @@ let corsOptions = {
 
 app.use(morgan('dev'));
 app.use(bodyParser.json());
+app.use(multipart());
 
 app.use(cors(corsOptions));
-//app.use(express.static(__dirname + "public"));
+app.use(express.static(__dirname + "/public"));
 app.use(routes);
+app.use('/api/v1',routes);
 
 module.exports = app;
 
