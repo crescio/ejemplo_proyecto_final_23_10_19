@@ -1,0 +1,5 @@
+---
+applications:
+- name: ejemplo_proyecto_final_23_10_19
+  memory: 256M
+  instances: 1
